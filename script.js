@@ -51,12 +51,13 @@ document.getElementById('land-form').addEventListener('submit', (event) => {
         fetch('2802_路竹新園_data.json')
             .then(response => response.json())
             .then(路竹新園_data => {
-                const landData = 路竹新園_data.find(item => item.地段 === section && item.地號 == landNumber);
+                // Convert landNumber to a number for comparison
+                const landData = 路竹新園_data.find(item => item.地段 === section && item.地號 === Number(landNumber));
                 if (!landData) {
                     fetch('2833_中華_data.json')
                         .then(response => response.json())
                         .then(中華_data => {
-                            const landData = 中華_data.find(item => item.地段 === section && item.地號 == landNumber);
+                            const landData = 中華_data.find(item => item.地段 === section && item.地號 === Number(landNumber));
                             if (landData) {
                                 calculateFee(landData);
                             } else {
@@ -76,7 +77,6 @@ document.getElementById('land-form').addEventListener('submit', (event) => {
             fetch('fee_standards.json')
                 .then(response => response.json())
                 .then(feeData => {
-                    // Example logic to calculate total fee based on area and boundary points
                     let feePerSquareMeter;
                     if (area <= 200) {
                         feePerSquareMeter = feeData[0]['宗地面積<200'];
