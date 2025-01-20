@@ -51,13 +51,12 @@ document.getElementById('land-form').addEventListener('submit', (event) => {
         fetch('2802_路竹新園_data.json')
             .then(response => response.json())
             .then(路竹新園_data => {
-                // Convert landNumber to a number for comparison
-                const landData = 路竹新園_data.find(item => item.地段 === section && item.地號 === Number(landNumber));
+                const landData = 路竹新園_data.find(item => item.地段 === section && item.地號 == landNumber);
                 if (!landData) {
                     fetch('2833_中華_data.json')
                         .then(response => response.json())
                         .then(中華_data => {
-                            const landData = 中華_data.find(item => item.地段 === section && item.地號 === Number(landNumber));
+                            const landData = 中華_data.find(item => item.地段 === section && item.地號 == landNumber);
                             if (landData) {
                                 calculateFee(landData);
                             } else {
