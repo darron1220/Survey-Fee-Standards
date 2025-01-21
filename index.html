@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>土地標示選取系統</title>
-    <link rel="stylesheet" href="styles.css"> <!-- 確保路徑正確 -->
+    <title>土地規費計算系統</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>土地標示選取系統</h1>
+        <h1>土地規費計算系統</h1>
         <form id="land-form">
             <label for="district">行政區：</label>
             <select id="district" name="district" required>
@@ -21,7 +21,7 @@
             </select>
 
             <label for="land-number">地號：</label>
-            <input type="text" id="land-number" name="land-number" placeholder="請輸入地號" required>
+            <input type="text" id="land-number" name="land-number" placeholder="請輸入地號" required disabled>
 
             <button type="submit">查詢</button>
         </form>
@@ -31,6 +31,6 @@
             <p id="result-text">請填寫查詢條件。</p>
         </div>
     </div>
-    <script src="script.js"></script> <!-- 確保路徑正確 -->
+    <script src="script.js"></script>
 </body>
 </html>
