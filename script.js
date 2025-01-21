@@ -1,40 +1,3 @@
-fetch('district_data.json')
-    .then(response => response.json())
-    .then(data => {
-        const districtSelect = document.getElementById('district');
-        const sectionSelect = document.getElementById('section');
-        const landNumberInput = document.getElementById('land-number');
-
-        for (const district in data) {
-            const option = document.createElement('option');
-            option.value = district;
-            option.textContent = district;
-            districtSelect.appendChild(option);
-        }
-
-        districtSelect.addEventListener('change', () => {
-            const selectedDistrict = districtSelect.value;
-            sectionSelect.innerHTML = '<option value="">請選擇地段</option>';
-            landNumberInput.disabled = true;
-            if (selectedDistrict) {
-                data[selectedDistrict].forEach(section => {
-                    const option = document.createElement('option');
-                    option.value = section;
-                    option.textContent = section;
-                    sectionSelect.appendChild(option);
-                });
-                sectionSelect.disabled = false;
-            } else {
-                sectionSelect.disabled = true;
-            }
-        });
-
-        sectionSelect.addEventListener('change', () => {
-            landNumberInput.disabled = !sectionSelect.value;
-        });
-    })
-    .catch(error => console.error('Error loading district data:', error));
-
 document.getElementById('land-form').addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -42,8 +5,9 @@ document.getElementById('land-form').addEventListener('submit', (event) => {
     const section = document.getElementById('section').value;
     const landNumber = document.getElementById('land-number').value;
 
+    // 驗證地號格式是否為8位數字
     if (!/^\d{8}$/.test(landNumber)) {
-        document.getElementById('result-text').innerHTML = "地號必須是8位數字";
+        showResult("地號必須是8位數字");
         return;
     }
 
@@ -54,7 +18,7 @@ document.getElementById('land-form').addEventListener('submit', (event) => {
             if (landData) {
                 calculateFee(landData);
             } else {
-                document.getElementById('result-text').innerHTML = "未找到此地號的資料";
+                showResult("未找到此地號的資料");
             }
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -74,11 +38,18 @@ function calculateFee(landData) {
             else feePerSquareMeter = feeData[0]['10000≦宗地面積'];
 
             const totalFee = area * feePerSquareMeter + boundaryPoints * feeData[0]['施測費'];
-            document.getElementById('result-text').innerHTML = `
+            showResult(`
                 登記面積：${area} 平方公尺<br>
                 界址點數：${boundaryPoints} 點<br>
                 總施測費用：${totalFee} 元
-            `;
+            `);
         })
         .catch(error => console.error('Error loading fee standards:', error));
+}
+
+function showResult(message) {
+    const resultDiv = document.getElementById('result');
+    const resultText = document.getElementById('result-text');
+    resultText.innerHTML = message;
+    resultDiv.style.display = "block";
 }
