@@ -45,9 +45,9 @@ document.getElementById('land-form').addEventListener('submit', (event) => {
   const section = document.getElementById('section').value;
   const landNumber = document.getElementById('land-number').value.trim();
 
-  // 驗證地號是否為8位數字
-  if (!/^\d{8}$/.test(landNumber)) {
-    document.getElementById('result-text').innerHTML = "地號必須是8位數字";
+  // 驗證地號是否為5至8位數字
+  if (!/^\d{5,8}$/.test(landNumber)) {
+    document.getElementById('result-text').innerHTML = "地號必須是5到8位數字";
     return;
   }
 
