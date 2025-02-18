@@ -40,11 +40,7 @@ fetch('district_data.json')
 document.getElementById('case-type').addEventListener('change', () => {
   const caseType = document.getElementById('case-type').value;
   const partitionFields = document.getElementById('partition-fields');
-  if (caseType === '分割案件') {
-    partitionFields.style.display = 'block';
-  } else {
-    partitionFields.style.display = 'none';
-  }
+  partitionFields.style.display = caseType === '分割案件' ? 'block' : 'none';
 });
 
 document.getElementById('land-form').addEventListener('submit', (event) => {
@@ -77,10 +73,10 @@ document.getElementById('land-form').addEventListener('submit', (event) => {
   fetch(mapping.file)
     .then(response => response.json())
     .then(data => {
-      // 將 JSON 中的「地段」與「地號」轉為數字再比較
+      // 將 JSON 中的 "地段" 與 "地號" 轉換成數字進行比較
       const landData = data.find(item => Number(item.地段) === mapping.code && Number(item.地號) === Number(landNumber));
       if (landData) {
-        // 若為分割案件，讀取使用者輸入的分割線段與界址點數
+        // 若為分割案件，讀取使用者輸入的分割線段與確定界址點數
         let partitionLines = 0, confirmationPoints = 0;
         if (caseType === '分割案件') {
           partitionLines = Number(document.getElementById('partition-lines').value) || 0;
@@ -111,10 +107,9 @@ function getBaseFee(area, tiers) {
 }
 
 function calculateFee(landData, caseType, additional) {
-  // 讀取面積 (依資料可能為「登記面積」或「面積」)
-  const area = landData.登記面積 || landData.面積;
-  // 讀取原有的界址點數（僅用於鑑界案件）
-  const boundaryPoints = landData.界址點數 || landData.界址點數量 || 0;
+  // 將面積與界址點數轉換成數字
+  const area = Number(landData.登記面積 || landData.面積);
+  const boundaryPoints = Number(landData.界址點數 || landData.界址點數量 || 0);
 
   fetch('fee_standards.json')
     .then(response => response.json())
