@@ -77,7 +77,8 @@ document.getElementById('land-form').addEventListener('submit', (event) => {
   fetch(mapping.file)
     .then(response => response.json())
     .then(data => {
-      const landData = data.find(item => item.地段 === mapping.code && item.地號 === Number(landNumber));
+      // 將 JSON 中的「地段」與「地號」轉為數字再比較
+      const landData = data.find(item => Number(item.地段) === mapping.code && Number(item.地號) === Number(landNumber));
       if (landData) {
         // 若為分割案件，讀取使用者輸入的分割線段與界址點數
         let partitionLines = 0, confirmationPoints = 0;
