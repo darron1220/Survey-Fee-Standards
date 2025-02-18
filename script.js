@@ -57,17 +57,20 @@ document.getElementById('land-form').addEventListener('submit', (event) => {
 
   if (!/^\d{5,8}$/.test(landNumber)) {
     document.getElementById('result-text').innerHTML = "地號必須是5到8位數字";
+    document.getElementById('result').style.display = "block";
     return;
   }
 
   if (!district || !section || !landNumber || !caseType) {
     document.getElementById('result-text').innerHTML = "請完整填寫表單";
+    document.getElementById('result').style.display = "block";
     return;
   }
 
   const mapping = sectionMapping[section];
   if (!mapping) {
     document.getElementById('result-text').innerHTML = "目前僅支援『新園段』與『中華段』的查詢";
+    document.getElementById('result').style.display = "block";
     return;
   }
 
@@ -85,11 +88,13 @@ document.getElementById('land-form').addEventListener('submit', (event) => {
         calculateFee(landData, caseType, { partitionLines, confirmationPoints });
       } else {
         document.getElementById('result-text').innerHTML = "未找到此地號的資料";
+        document.getElementById('result').style.display = "block";
       }
     })
     .catch(error => {
       console.error('Error loading data file:', error);
       document.getElementById('result-text').innerHTML = "資料讀取錯誤";
+      document.getElementById('result').style.display = "block";
     });
 });
 
@@ -117,6 +122,7 @@ function calculateFee(landData, caseType, additional) {
       const feeStandard = feeData.find(item => item["案件類型"] === caseType);
       if (!feeStandard) {
         document.getElementById('result-text').innerHTML = "費用資料錯誤";
+        document.getElementById('result').style.display = "block";
         return;
       }
       const baseFee = getBaseFee(area, feeStandard.tiers);
@@ -134,9 +140,11 @@ function calculateFee(landData, caseType, additional) {
       const totalFee = baseFee + extraFee;
       document.getElementById('result-text').innerHTML =
         `總施測費用: ${totalFee} 元 (基本費 ${baseFee} + 加收 ${extraFee})`;
+      document.getElementById('result').style.display = "block";
     })
     .catch(error => {
       console.error('Error loading fee data:', error);
       document.getElementById('result-text').innerHTML = "費用資料讀取錯誤";
+      document.getElementById('result').style.display = "block";
     });
 }
