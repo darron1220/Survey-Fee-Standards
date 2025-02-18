@@ -1,6 +1,6 @@
 const sectionMapping = {
-  "新園段": { file: "2802_路竹新園_data.json", code: 2802 },
-  "中華段": { file: "2833_中華_data.json", code: 2833 }
+  "新園段": { file: "2802_Luzhu_Xinyuan_data.json", code: 2802 },
+  "中華段": { file: "2833_Luzhu_Zhonghua_data.json", code: 2833 }
 };
 
 fetch('district_data.json')
