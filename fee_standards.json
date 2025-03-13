@@ -17,8 +17,8 @@
     "tiers": [
       { "min": 0, "max": 200, "baseFee": 1500 },
       { "min": 200, "max": 1000, "baseFee": 2000 },
-      { "min": 1000, "max": 2000, "baseFee": 4000 },
-      { "min": 2000, "max": null, "baseFee": 3000 }
+      { "min": 1000, "max": 10000, "baseFee": 2500 },
+      { "min": 10000, "max": null, "baseFee": 3000 }
     ],
     "lineFee": 500,
     "confirmationFee": 200
