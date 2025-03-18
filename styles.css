@@ -6,12 +6,12 @@ body {
 }
 
 .container {
-    width: 80%;
-    margin: 0 auto;
+    width: 600px;
+    margin: 50px auto;
     padding: 20px;
     background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -33,7 +33,7 @@ select, input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 button {
@@ -42,12 +42,21 @@ button {
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+#reset-btn {
+    margin-top: 15px;
+    background-color: #ccc;
+}
+
+#reset-btn:hover {
+    background-color: #999;
 }
 
 #result {
