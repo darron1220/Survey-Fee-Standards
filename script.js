@@ -144,3 +144,30 @@ function calculateFee(landData, caseType, additional) {
       document.getElementById('result').style.display = "block";
     });
 }
+// 新增初始化功能（不動原始邏輯）
+document.getElementById('land-form').addEventListener('submit', () => {
+  document.getElementById('reset-btn').style.display = 'inline-block';
+});
+
+// 綁定初始化按鈕事件
+document.getElementById('reset-btn').addEventListener('click', resetAll);
+
+// 定義初始化功能
+function resetAll() {
+  // 重置表單欄位
+  document.getElementById('land-form').reset();
+
+  // 隱藏結果區域
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('result-text').innerHTML = '';
+
+  // 隱藏初始化按鈕
+  document.getElementById('reset-btn').style.display = 'none';
+
+  // 重設地段選項與分割欄位
+  const sectionSelect = document.getElementById('section');
+  sectionSelect.innerHTML = '<option value="">請先選擇行政區</option>';
+  sectionSelect.disabled = true;
+
+  document.getElementById('partition-fields').style.display = 'none';
+}
