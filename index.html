@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +11,12 @@
     <h1>土地複丈規費試算</h1>
     <form id="land-form">
       <label for="district">行政區：</label>
-      <select id="district" name="district" required>
+      <select id="district" name="district">
         <option value="">請選擇行政區</option>
       </select>
 
       <label for="section">地段：</label>
-      <select id="section" name="section" required disabled>
+      <select id="section" name="section">
         <option value="">請先選擇行政區</option>
       </select>
 
@@ -33,9 +33,9 @@
       <div id="partition-fields" style="display: none;">
         <label for="partition-lines">分割線段數：</label>
         <input type="number" id="partition-lines" name="partition-lines" min="0" placeholder="請輸入分割線段數">
-        
-        <label for="confirmation-points">確定界址點數：</label>
-        <input type="number" id="confirmation-points" name="confirmation-points" min="0" placeholder="請輸入確定界址點數">
+
+        <label for="confirmation-points">確認點數：</label>
+        <input type="number" id="confirmation-points" name="confirmation-points" min="0" placeholder="請輸入確認界址點數">
       </div>
 
       <button type="submit">查詢</button>
@@ -45,6 +45,9 @@
       <h2>查詢結果</h2>
       <p id="result-text"></p>
     </div>
+
+    <button id="reset-btn" style="display: none;">初始化</button>
+
   </div>
 
   <script src="script.js"></script>
