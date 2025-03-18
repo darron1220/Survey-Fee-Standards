@@ -6,12 +6,12 @@ body {
 }
 
 .container {
-    width: 600px;
-    margin: 50px auto;
+    width: 80%;
+    margin: 0 auto;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -33,7 +33,7 @@ select, input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 button {
@@ -42,21 +42,12 @@ button {
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #0056b3;
-}
-
-#reset-btn {
-    margin-top: 15px;
-    background-color: #ccc;
-}
-
-#reset-btn:hover {
-    background-color: #999;
 }
 
 #result {
@@ -66,4 +57,18 @@ button:hover {
 #result-text {
     font-size: 18px;
     color: #333;
+}
+#reset-btn {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+#reset-btn:hover {
+  background-color: #999;
 }
