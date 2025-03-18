@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>土地規費計算系統</title>
+  <title>土地複丈是算計費</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>土地規費計算系統</h1>
+    <h1>土地複丈規費試算</h1>
     <form id="land-form">
       <label for="district">行政區：</label>
       <select id="district" name="district" required>
@@ -21,7 +21,7 @@
       </select>
 
       <label for="land-number">地號：</label>
-      <input type="text" id="land-number" name="land-number" placeholder="請輸入地號" required>
+      <input type="text" id="land-number" name="land-number" placeholder="地號為8碼，如320-1為03200001" required>
 
       <label for="case-type">案件類型：</label>
       <select id="case-type" name="case-type" required>
@@ -30,7 +30,6 @@
         <option value="分割案件">分割案件</option>
       </select>
 
-      <!-- 當選擇分割案件時，顯示額外的欄位 -->
       <div id="partition-fields" style="display: none;">
         <label for="partition-lines">分割線段數：</label>
         <input type="number" id="partition-lines" name="partition-lines" min="0" placeholder="請輸入分割線段數">
@@ -47,6 +46,7 @@
       <p id="result-text"></p>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
